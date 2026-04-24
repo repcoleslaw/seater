@@ -4,19 +4,19 @@ overview: Build a simple no-login MVP web app that lets a user enter guests/cons
 todos:
   - id: scaffold-mvp-ui
     content: Create single-page Next.js MVP with sections for guests, constraints, table setup, generation, and export.
-    status: in_progress
+    status: completed
   - id: implement-session-state
     content: Store all planner inputs and generated outputs in in-memory client state only, with optional sessionStorage backup during active session.
-    status: pending
+    status: completed
   - id: build-solver
     content: Implement weighted seating generator with must-pair, cannot-sit-together, and proximity scoring plus retry via new random seed.
-    status: pending
+    status: completed
   - id: add-export-and-disposal
     content: Add final CSV export and immediately clear app state after successful download action.
-    status: pending
+    status: completed
   - id: add-validations-and-tests
     content: Add input validation and tests for solver constraints, capacity checks, and CSV output formatting.
-    status: pending
+    status: completed
 isProject: false
 ---
 

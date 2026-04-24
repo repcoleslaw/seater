@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Seating Planner MVP
 
-## Getting Started
+Simple no-login seating planner web app. Users can:
+- Add guests manually or upload a CSV.
+- Define constraints (`must_pair`, `cannot_pair`, `prefer_near`).
+- Define uneven table capacities.
+- Generate and retry seating plans.
+- Download final assignments as CSV.
 
-First, run the development server:
+Data is kept local to the browser session and is cleared after final CSV download.
+
+## Quick Local Run
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the app:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## CSV Examples (Exact)
 
-## Learn More
+### Input Guest CSV (minimum format)
 
-To learn more about Next.js, take a look at the following resources:
+Must include a `name` header.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```csv
+name
+Alice Johnson
+Bob Chen
+Carla Diaz
+Daniel Reed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Input Guest CSV (with extra columns)
 
-## Deploy on Vercel
+Extra columns are allowed. Only the `name` column is used.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```csv
+name,email,group
+Alice Johnson,alice@example.com,Family
+Bob Chen,bob@example.com,Friends
+Carla Diaz,carla@example.com,Work
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Output Assignment CSV
+
+Downloaded format is exactly:
+
+```csv
+guest_name,table_label,seat_index
+Alice Johnson,Table 1,1
+Bob Chen,Table 1,2
+Carla Diaz,Table 2,1
+Daniel Reed,Table 2,2
+```
+
+## Build and Test
+
+```bash
+npm run lint
+npm test
+npm run build
+```
+
+## Quick Deploy (Vercel)
+
+### Option A: Vercel CLI
+
+1. Install Vercel CLI:
+
+```bash
+npm i -g vercel
+```
+
+2. From project root, deploy:
+
+```bash
+vercel
+```
+
+3. For production deploy:
+
+```bash
+vercel --prod
+```
+
+### Option B: Vercel Dashboard + Git
+
+1. Push project to GitHub/GitLab/Bitbucket.
+2. In Vercel, choose **Add New Project**.
+3. Import the repo and keep defaults for Next.js.
+4. Click **Deploy**.
+
+No environment variables are required for this MVP.

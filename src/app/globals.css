@@ -19,8 +19,21 @@
   }
 }
 
+@layer components {
+  .data-row{
+    @apply bg-neutral-800 p-2 rounded;
+  }
+  .primary-button{
+    @apply rounded bg-blue-600 px-3 py-2 text-white;
+  }
+  .secondary-button{
+    @apply rounded bg-red-600 px-3 py-2 text-white disabled:bg-zinc-300;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
